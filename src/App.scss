@@ -19,6 +19,9 @@
   border-radius: 4px;
   cursor: pointer;
   margin: 10px 10px ;
+  &:hover {
+    background: #555555;
+  }
 }
 
 .card {
@@ -30,4 +33,24 @@
 .create-line {
   width: 100%;
   border-top: 3px solid black;
+}
+
+.myli {
+  border: none;
+  display: block;
+  text-align: left;
+  padding: 4px 0;
+  &:hover {
+    background-color: #afafaf;
+    cursor: pointer;
+  }
+  li {
+    list-style: none;
+    border: none;
+
+  }
+}
+
+.cardBoard {
+
 }
