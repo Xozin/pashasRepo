@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import './App.css'
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
+import data from '../converter/data.json';
+
 
 function App() {
     const [formData, setFormData] = useState({name:'',});
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        console.log(name, value)
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+    const keys = Object.keys(data);
 
     const handleSubmit  = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log(data);
+
         console.log('Отправленные данные:', formData);
         alert('Форма отправлена!');
         // сброс (если нужно)
@@ -27,8 +26,12 @@ function App() {
           <h1>Наше Гавно</h1>
           <form className="form" onSubmit={handleSubmit}>
           <div className="card">
-              <label htmlFor="name" className="form-label">Введи Артикул</label>
-              <input name="name" type="text" className="form-input" placeholder="Артикул" value={formData.name} onChange={handleChange}/>
+              <Autocomplete
+                  disablePortal
+                  options={keys}
+                  sx={{ width: 300 }}
+                  renderInput={(params) => <TextField {...params} label="Movie" />}
+              />
               <button type="submit" className="form-button">Поиск</button>
           </div>
           </form>
