@@ -1,7 +1,10 @@
+$base-dark: #252726;
+
 #root {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: #dcddde;
 }
 
 .form-label {
@@ -12,7 +15,7 @@
 
 .form-button {
   padding: 10px;
-  background: #2C2C2C;
+  background: $base-dark;
   color: white;
   font-size: 16px;
   border: none;

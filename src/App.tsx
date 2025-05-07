@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import './App.css'
+import './App.scss'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 import data from '../converter/data.json';
+import CardList from "./CardList/card.tsx";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           </div>
           </form>
           <div className="create-line"></div>
+          <CardList/>
       </>
   )
 }
