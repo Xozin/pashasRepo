@@ -10,18 +10,7 @@
   margin: 10px 10px ;
 }
 
-.form-input{
-
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin: 10px 10px ;
-}
-
 .form-button {
-
   padding: 10px;
   background: #2C2C2C;
   color: white;
@@ -34,6 +23,8 @@
 
 .card {
   margin: 0 auto;
+  justify-content: center;
+  display: flex;
 }
 
 .create-line {

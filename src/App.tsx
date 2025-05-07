@@ -30,7 +30,7 @@ function App() {
                   disablePortal
                   options={keys}
                   sx={{ width: 300 }}
-                  renderInput={(params) => <TextField {...params} label="Movie" />}
+                  renderInput={(params) => <TextField {...params} label="Артикул" />}
               />
               <button type="submit" className="form-button">Поиск</button>
           </div>
