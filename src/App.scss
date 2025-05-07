@@ -36,10 +36,7 @@
 }
 
 .myli {
-  border: none;
-  display: block;
-  text-align: left;
-  padding: 4px 0;
+
   &:hover {
     background-color: #afafaf;
     cursor: pointer;
@@ -47,7 +44,7 @@
   li {
     list-style: none;
     border: none;
-
+    margin-left: 10px;
   }
 }
 
