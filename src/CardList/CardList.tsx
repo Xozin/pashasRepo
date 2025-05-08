@@ -20,7 +20,7 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
 
   const [RRC, SetRRC] = useState(price);
   const [rate, setRate] = useState('0');
-  const [discount] = useState('0');
+  const [discount, setDiscount] = useState('0');
 
   const industrialHandler = () => (typeof price === 'number' && !isNaN(price))?SetRRC((price * config.rates.industrial).toFixed(2)): price
 
@@ -39,6 +39,42 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
 
   const priceClickHandler = () => {
     copyHandler((+RRC * +rate).toFixed(2).toString())
+  }
+
+  const rateChangeHandler = (event: { target: { value: string; }; })=> {
+    let inputValue = event.target.value;
+
+    inputValue = inputValue.replace(/,/g, '.')
+    inputValue = inputValue.replace(/[^0-9.,]/g, '');
+    inputValue = inputValue.replace(/(?<=\d*\.\d*)\./g, '')
+    inputValue = inputValue.replace(/^0+(?!\.|,|$)/, '');
+
+    setRate(inputValue ? inputValue : '0');
+
+  }
+
+  const percentChangeHandler = (event: { target: { value: string; }; })=> {
+    let inputValue = event.target.value;
+
+    inputValue = inputValue.replace(/,/g, '.')
+    inputValue = inputValue.replace(/[^0-9.,]/g, '');
+    inputValue = inputValue.replace(/(?<=\d*\.\d*)\./g, '')
+    inputValue = inputValue.replace(/^0+(?!\.|,|$)/, '');
+    setDiscount(inputValue ? inputValue : '0');
+  }
+
+  const percentBlurHandler = (event: { target: { value: string; }; })=> {
+    let inputValue = event.target.value;
+    inputValue = inputValue+'%'
+    console.log(inputValue)
+    setDiscount(inputValue ? inputValue : '0');
+  }
+
+  const percentFocusHandler = (event: { target: { value: string; }; })=> {
+    let inputValue = event.target.value;
+    inputValue = inputValue.replace(/[^0-9.,]/g, '');
+    setDiscount(inputValue ? inputValue : '0');
+
   }
 
   const [open, setOpen] = React.useState(false);
@@ -95,29 +131,13 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
         </div>
         <div className="actions">
           <label>Скидка</label>
-          <input type="text" value={discount} className="input"/>
+          <input type="text" value={discount} className="input" onChange={percentChangeHandler} onBlur={percentBlurHandler} onFocus={percentFocusHandler} />
           <label>По курсу</label>
-          <input className="input" type={'text'} placeholder="Курс" value={rate} onChange={(event)=> {
-            let inputValue = event.target.value;
-
-            inputValue = inputValue.replace(/,/g, '.')
-
-            // Удаляем все символы, кроме цифр и точки
-            inputValue = inputValue.replace(/[^0-9.,]/g, '');
-            inputValue = inputValue.replace(/(?<=\d*\.\d*)\./g, '')
-
-            // Удаляем ведущие нули
-            inputValue = inputValue.replace(/^0+(?!\.|,|$)/, '');
-            // Преобразуем в число и обновляем состояние
-            console.log(inputValue)
-            console.log(+inputValue)
-            setRate(inputValue ? inputValue : '0');
-
-          }}/>
+          <input className="input" type={'text'} placeholder="Курс" value={rate} onChange={rateChangeHandler} />
           <button className="close-btn" onClick={()=>setRate('0')}>×</button>
         </div>
         <div className="priceArea">
-          <span className='price' onClick={priceClickHandler}>{(+RRC * +rate).toFixed(2)+'₽'}</span>
+          <span className='price' onClick={priceClickHandler}>{((+RRC * +rate)*(1 - parseFloat(discount)/100)).toFixed(2)+'₽'}</span>
         </div>
         <Snackbar
           open={open}
