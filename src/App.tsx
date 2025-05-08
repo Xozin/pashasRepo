@@ -5,14 +5,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 // @ts-ignore
 import { VariableSizeList } from 'react-window';
 
-interface DataType {
-  [key: string]: string | number;
-}
+import untypedData from './data/data.json';
+import CardList from "./CardList/CardList.tsx";
+import type {IData} from "./data/IData.ts";
 
-import untypedData from '../converter/data.json';
-import CardList from "./CardList/card.tsx";
-
-const data: DataType = untypedData;
+const data: IData = untypedData;
 
 // Компонент виртуализированного списка
 const renderRow = ({ data, index, style }: { data: any; index: number; style: React.CSSProperties }) => {
@@ -60,7 +57,7 @@ const VirtualizedListbox = React.forwardRef(function VirtualizedListbox(
 
 function App() {
     const keys = Object.keys(data);
-    const [value, setValue] = React.useState<string | null>();
+    const [value, setValue] = useState<string | null>();
     const [inputValue, setInputValue] = useState('');
 
     const handleSubmit  = (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -76,6 +73,7 @@ function App() {
       <div className="card">
         <Autocomplete
           disablePortal
+          style={{width:'700px'}}
           value={value}
           onChange={(_event: any, newValue: string | null) => {
               setValue(newValue);
@@ -91,14 +89,14 @@ function App() {
                   sx={{ width: 300 }}
                   renderInput={(params) => <TextField {...params} label="Артикул" />}
               />
-              <button type="submit" className="form-button">Поиск</button>
+              {/*<Button type="submit" className="form-button">Поиск</Button>*/}
           </div>
           </form>
           <div className="create-line"></div>
       {value && <div className="cardBoard">
+          <CardList article={value} price={data[value]} />
 
       </div> }
-    <CardList/>
       </>
   )
 }

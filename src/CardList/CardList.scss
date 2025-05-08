@@ -7,9 +7,7 @@
 }
 
 .card{
-  border: 1px solid #D9D9D9;
   padding: 15px;
-  border-radius: 8px  ;
 }
 
 .image-placeholder {
@@ -31,13 +29,16 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  text-align: left;
 }
 
 .RRC {
   margin: 4px 0;
-  color: #777;
-  font-size: 14px;
+  color: #151515;
+  font-size: 18px;
   text-align: left;
+  font-weight: bold;
+
 }
 
 .price {
@@ -86,7 +87,8 @@
   padding: 6px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  min-width: 80px;
+  min-width: 40px;
+  width: 80px;
 }
 
 .close-btn {
@@ -96,4 +98,13 @@
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.priceArea {
+  text-align: right;
+  margin-top: 24px;
+  .price {
+    color: #151515;
+    font-size: 30px;
+  }
 }
