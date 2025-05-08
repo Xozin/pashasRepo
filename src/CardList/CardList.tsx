@@ -20,7 +20,7 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
 
   const [RRC, SetRRC] = useState(price);
   const [rate, setRate] = useState('0');
-  const [discount, setDiscount] = useState('0');
+  const [discount] = useState('0');
 
   const industrialHandler = () => (typeof price === 'number' && !isNaN(price))?SetRRC((price * config.rates.industrial).toFixed(2)): price
 
