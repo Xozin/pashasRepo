@@ -68,7 +68,7 @@ function App() {
 
   return (
     <>
-      <h1>Наше Гавно</h1>
+      <h1>Ведро артикулов</h1>
       <form className="form" onSubmit={handleSubmit}>
       <div className="card">
         <Autocomplete

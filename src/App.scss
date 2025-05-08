@@ -49,6 +49,14 @@ $base-dark: #252726;
   }
 }
 
-.cardBoard {
+h1{
+  font-family: "Gothic";
+  font-size: 60px;
+}
 
+@font-face {
+  font-family: "Gothic";
+  src: url("./assets/lombardina-initial-one3.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }
