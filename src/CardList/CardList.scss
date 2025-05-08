@@ -60,6 +60,13 @@
   font-size: 12px;
   cursor: pointer;
   transition: background 0.2s ease;
+  &:hover {
+    background: #818080 !important;
+  }
+  &.active {
+    background: #5c5c5c;
+    color: #fff;
+  }
 }
 
 .tag-button:hover {
@@ -106,5 +113,6 @@
   .price {
     color: #151515;
     font-size: 30px;
+    margin-left: 56px;
   }
 }

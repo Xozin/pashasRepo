@@ -1,4 +1,4 @@
-import React, {type ReactNode, useState} from 'react';
+import React, {type ReactNode, useState, useEffect, type MouseEventHandler} from 'react';
 import './CardList.scss'
 
 interface CardListProps {
@@ -21,12 +21,26 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
   const [RRC, SetRRC] = useState(price);
   const [rate, setRate] = useState('0');
   const [discount, setDiscount] = useState('0');
+  const [activeButton, setActiveButton] = useState('');
 
-  const industrialHandler = () => (typeof price === 'number' && !isNaN(price))?SetRRC((price * config.rates.industrial).toFixed(2)): price
 
-  const balancerHandler = () => (typeof price === 'number' && !isNaN(price))?SetRRC((price * config.rates.balancer).toFixed(2)): price
 
-  const profHandler = () => (typeof price === 'number' && !isNaN(price))?SetRRC((price * config.rates.prof).toFixed(2)): price
+  const industrialHandler = () => {
+    setActiveButton('industrial')
+    return (typeof price === 'number' && !isNaN(price)) ? SetRRC((price * config.rates.industrial).toFixed(2)) : price
+  }
+
+  const balancerHandler = () => {
+    setActiveButton('balancer')
+
+    return (typeof price === 'number' && !isNaN(price)) ? SetRRC((price * config.rates.balancer).toFixed(2)) : price
+  }
+
+  const profHandler = () => {
+    setActiveButton('prof')
+
+    return (typeof price === 'number' && !isNaN(price)) ? SetRRC((price * config.rates.prof).toFixed(2)) : price
+  }
 
   const copyHandler = async (text: string) => {
     await navigator.clipboard.writeText(text)
@@ -37,9 +51,14 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
     copyHandler(RRC.toString())
   }
 
-  const priceClickHandler = () => {
-    copyHandler((+RRC * +rate).toFixed(2).toString())
+  const priceClickHandler = (event: MouseEventHandler<HTMLSpanElement>) => {
+    console.log(parseFloat(event.target.innerText))
+    copyHandler(parseFloat(event.target.innerText).toFixed(2))
   }
+
+  useEffect(() => {
+    SetRRC(price);
+  }, [price])
 
   const rateChangeHandler = (event: { target: { value: string; }; })=> {
     let inputValue = event.target.value;
@@ -123,9 +142,9 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
               <div className="price">Цена из прайса: {price}€ </div>
             </div>
             <div className="tags">
-              <button className="tag-button" onClick={industrialHandler}>INDUSTRIAL</button>
-              <button className="tag-button" onClick={balancerHandler}>BALANCERS</button>
-              <button className="tag-button" onClick={profHandler}>PROF LINE</button>
+              <button className={`tag-button ${activeButton === "industrial" ? "active" : ""}`} onClick={industrialHandler}>INDUSTRIAL</button>
+              <button className={`tag-button ${activeButton === "balancer" ? "active" : ""}`} onClick={balancerHandler}>BALANCERS</button>
+              <button className={`tag-button ${activeButton === "prof" ? "active" : ""}`} onClick={profHandler}>PROF LINE</button>
             </div>
           </div>
         </div>
@@ -137,6 +156,7 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
           <button className="close-btn" onClick={()=>setRate('0')}>×</button>
         </div>
         <div className="priceArea">
+          <span className='price' onClick={priceClickHandler}>{((+RRC )*(1 - parseFloat(discount)/100)).toFixed(2)+'€'}</span>
           <span className='price' onClick={priceClickHandler}>{((+RRC * +rate)*(1 - parseFloat(discount)/100)).toFixed(2)+'₽'}</span>
         </div>
         <Snackbar

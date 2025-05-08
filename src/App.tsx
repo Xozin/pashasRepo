@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.scss'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import { VariableSizeList } from 'react-window';
 
 import untypedData from './data/data.json';
@@ -62,7 +63,6 @@ function App() {
 
     const handleSubmit  = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(value){alert(data[value])}
     };
 
 
