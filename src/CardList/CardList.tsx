@@ -131,7 +131,7 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
         <h2>Найденные товары</h2>
         <div className="card">
           <div className="card-left">
-            <img className={"image-placeholder"} src="/logo.png" alt="Логотип" width={200} />
+            <img className={"image-placeholder"} src="./logo.png" alt="Логотип" width={200} />
           </div>
           <div className="card-right">
             <div className="card-header">
