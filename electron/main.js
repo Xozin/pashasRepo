@@ -11,6 +11,7 @@ app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 900,
         height: 800,
+        autoHideMenuBar: true,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: false,
