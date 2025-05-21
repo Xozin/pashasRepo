@@ -52,13 +52,20 @@ const CardList: React.FC<CardListProps> = ({article, price}): ReactNode => {
   }
 
   const priceClickHandler = (event: MouseEventHandler<HTMLSpanElement>) => {
-    console.log(parseFloat(event.target.innerText))
     copyHandler(parseFloat(event.target.innerText).toFixed(2))
   }
 
   useEffect(() => {
-    SetRRC(price);
-  }, [price])
+    if (activeButton === 'industrial') {
+      industrialHandler();
+    } else if (activeButton === 'balancer') {
+      balancerHandler();
+    } else if (activeButton === 'prof') {
+      profHandler();
+    } else {
+      SetRRC(price); // если кнопка не выбрана
+    }
+  }, [article, price]);
 
   const rateChangeHandler = (event: { target: { value: string; }; })=> {
     let inputValue = event.target.value;
