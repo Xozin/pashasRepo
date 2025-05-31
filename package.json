@@ -13,18 +13,12 @@
     "format": "prettier --write \"**/*.{ts,tsx,json}\""
   },
   "lint-staged": {
-    "*.{ts,tsx,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{ts,tsx,json}": ["prettier --write", "git add"]
   },
   "main": "electron/main.js",
   "build": {
     "appId": "com.example.app",
-    "files": [
-      "dist/**/*",
-      "electron/**/*"
-    ],
+    "files": ["dist/**/*", "electron/**/*"],
     "directories": {
       "buildResources": "assets"
     }
