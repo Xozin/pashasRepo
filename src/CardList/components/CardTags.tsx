@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 interface CardTagsProps {
-  activeButton: string;
-  onButtonClick: (type: string) => void;
+  activeButton: string
+  onButtonClick: (type: string) => void
 }
 
 const CardTags: React.FC<CardTagsProps> = ({ activeButton, onButtonClick }) => (
@@ -17,6 +17,6 @@ const CardTags: React.FC<CardTagsProps> = ({ activeButton, onButtonClick }) => (
       </button>
     ))}
   </div>
-);
+)
 
-export default CardTags;
+export default CardTags

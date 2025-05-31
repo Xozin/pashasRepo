@@ -1,10 +1,10 @@
-import React from 'react';
-import { Snackbar, IconButton } from '@mui/material';
-import CloseIcon from './CloseIcon';
+import React from 'react'
+import { Snackbar, IconButton } from '@mui/material'
+import CloseIcon from './CloseIcon'
 
 interface NotificationProps {
-  open: boolean;
-  onClose: () => void;
+  open: boolean
+  onClose: () => void
 }
 
 const Notification: React.FC<NotificationProps> = ({ open, onClose }) => (
@@ -20,6 +20,6 @@ const Notification: React.FC<NotificationProps> = ({ open, onClose }) => (
     }
     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
   />
-);
+)
 
-export default Notification;
+export default Notification

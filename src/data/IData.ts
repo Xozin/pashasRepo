@@ -1,3 +1,3 @@
 export interface IData {
-  [key: string]: string | number;
+  [key: string]: string | number
 }

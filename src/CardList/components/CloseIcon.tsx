@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-const CloseIcon: React.FC = () => <span>X</span>;
+const CloseIcon: React.FC = () => <span>X</span>
 
-export default CloseIcon;
+export default CloseIcon
