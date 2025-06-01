@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react'
 import './App.scss'
 
-import untypedData from './data/data.json';
-import { CardList } from './CardList';
-import type { IData } from './data/IData.ts';
+import untypedData from './data/data.json'
+import { CardList } from './CardList'
+import type { IData } from './data/IData.ts'
 import { AlterAutocomplete } from './Autocomplete'
-const data: IData = untypedData;
+const data: IData = untypedData
 
 function App() {
   const keys = useMemo(
