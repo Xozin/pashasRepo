@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
+    "prepare": "husky",
     "lint": "oxlint .",
     "preview": "vite preview",
     "dev": "cross-env VITE_DEV_SERVER_URL=http://localhost:5173 concurrently \"vite\" \"electron .\"",
@@ -22,7 +22,10 @@
   "main": "electron/main.js",
   "build": {
     "appId": "com.example.app",
-    "files": ["dist/**/*", "electron/**/*"],
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
     "directories": {
       "buildResources": "assets"
     }
@@ -48,6 +51,7 @@
     "electron": "^36.2.0",
     "electron-builder": "^26.0.12",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "oxlint": "^0.17.0",
     "prettier": "^3.5.3",
