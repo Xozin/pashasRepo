@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "lint": "oxlint .",
     "preview": "vite preview",
     "dev": "cross-env VITE_DEV_SERVER_URL=http://localhost:5173 concurrently \"vite\" \"electron .\"",
@@ -13,7 +13,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,json}\" && oxlint --fix"
   },
   "lint-staged": {
-    "*.{ts,tsx,json}": ["prettier --write \"**/*.{ts,tsx,json}\"", "oxlint --fix", "git add"]
+    "*.{ts,tsx,json}": [
+      "prettier --write \"**/*.{ts,tsx,json}\"",
+      "oxlint --fix",
+      "git add"
+    ]
   },
   "main": "electron/main.js",
   "build": {
