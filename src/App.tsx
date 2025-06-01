@@ -18,6 +18,7 @@ function App() {
     e.preventDefault()
   }
 
+
   return (
     <>
       <h1>Ведро артикулов</h1>
